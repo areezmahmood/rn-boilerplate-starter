@@ -1,0 +1,24 @@
+{
+  "name": "@areezmahmood/rn-boilerplate-starter",
+  "version": "1.0.0",
+  "description": "My custom React Native boilerplate",
+  "keywords": [
+    "react-native",
+    "template"
+  ],
+  "homepage": "https://github.com/your-username/react-native-boilerplate-template#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/react-native-boilerplate-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/react-native-boilerplate-template.git"
+  },
+  "license": "MIT",
+  "author": "Areez Mahmood",
+  "type": "React Native + Typescript",
+  "main": "template.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
