@@ -1,7 +1,7 @@
 {
   "myapp": {
     "common_appName": {
-      "full": "__MyApp__ React Native",
+      "full": "AwesomeProject React Native",
       "initials": "RNB"
     },
     "common_error": "Quelque chose s'est mal passé.",

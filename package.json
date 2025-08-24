@@ -1,6 +1,6 @@
 {
-  "name": "@areezmahmood/rn-boilerplate-starter",
-  "version": "1.0.0",
+  "name": "rn-boilerplate-starter",
+  "version": "1.0.1",
   "description": "My custom React Native boilerplate",
   "keywords": [
     "react-native",
