@@ -1,6 +1,6 @@
 {
   "name": "rn-boilerplate-starter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "My custom React Native boilerplate",
   "keywords": [
     "react-native",
@@ -20,5 +20,6 @@
   "main": "template.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "dependencies": {}
 }
