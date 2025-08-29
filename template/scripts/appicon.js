@@ -6,7 +6,7 @@ const { execSync } = require("child_process");
 const projectRoot = process.cwd();
 const androidRes = path.join(projectRoot, "android/app/src/main/res");
 const iosAssets = path.join(projectRoot, "ios", "AwesomeProject", "Images.xcassets", "AppIcon.appiconset");
-const sourceIcon = path.join(projectRoot, "src/assets/images/logo.png");
+const sourceIcon = path.join(projectRoot, "src/assets/branding/logo.png");
 
 // ----------------- ANDROID -----------------
 const androidIconSizes = {

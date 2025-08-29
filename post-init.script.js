@@ -78,8 +78,8 @@ const plistPath = path.join(projectDir, 'ios', projectName, 'Info.plist');
       }
     });
 
-    
-     const indexPath = path.join(projectDir, 'src', 'components', 'organisms', 'index.ts');
+
+     const indexPath = path.join(projectDir,'src/components/organisms/index.ts');
     if (fs.existsSync(indexPath)) {
       let content = fs.readFileSync(indexPath, 'utf-8');
       const before = content;
