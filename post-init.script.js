@@ -78,9 +78,31 @@ const plistPath = path.join(projectDir, 'ios', projectName, 'Info.plist');
       }
     });
 
-   
+    
+     const indexPath = path.join(projectDir, 'src', 'components', 'organisms', 'index.ts');
+    if (fs.existsSync(indexPath)) {
+      let content = fs.readFileSync(indexPath, 'utf-8');
+      const before = content;
+      content = content.replace(/export\s+\{default\s+as\s+CameraView\}.*\n?/, '');
+      if (content !== before) {
+        fs.writeFileSync(indexPath, content, 'utf-8');
+        console.log('📝 Removed CameraView export from src/components/organisms/index.ts');
+      }
+    }
+     const hooksIndexPath = path.join(projectDir, 'src', 'hooks', 'index.ts');
+    if (fs.existsSync(hooksIndexPath)) {
+      let content = fs.readFileSync(hooksIndexPath, 'utf-8');
+      const before = content;
+      content = content
+        .replace(/export\s+\{\s*useCameraPermission\s*\}.*\n?/, '')
+        .replace(/export\s+\{\s*useImagePickerPermission\s*\}.*\n?/, '');
+      if (content !== before) {
+        fs.writeFileSync(hooksIndexPath, content, 'utf-8');
+        console.log('📝 Removed Camera exports from src/hooks/index.ts');
+      }
+    }
 
-    // Step 3: Remove dependencies from package.json
+    // Step 4: Remove dependencies from package.json
     const depsToRemove = [
       'react-native-compressor',
       'react-native-image-picker',
