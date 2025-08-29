@@ -8,11 +8,11 @@ configurePersistable({
       storage.setString(key, data);
       return Promise.resolve();
     },
-    getItem: (key) => {
+    getItem: key => {
       const value = storage.getString(key);
       return value ?? null;
     },
-    removeItem: (key) => {
+    removeItem: key => {
       storage.removeItem(key);
       return Promise.resolve();
     },

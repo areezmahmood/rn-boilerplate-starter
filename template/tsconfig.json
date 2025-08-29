@@ -7,7 +7,6 @@
     },
     "noUnusedLocals": true
   },
-  "include": ["**/*.ts", "**/*.tsx","./src/**/*"],
-  "exclude": ["**/node_modules", "**/Pods","_","**/android","**/ios" ]
+  "include": ["**/*.ts", "**/*.tsx", "./src/**/*"],
+  "exclude": ["**/node_modules", "**/Pods", "_", "**/android", "**/ios"]
 }
-

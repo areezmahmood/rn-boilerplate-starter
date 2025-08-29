@@ -27,17 +27,14 @@ function App() {
   return (
     <GestureHandlerRootView>
       <StoresProvider>
-
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider storage={storage}>
-              <KeyboardProvider>
-
-          <ApplicationNavigator />
-          </KeyboardProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider storage={storage}>
+            <KeyboardProvider>
+              <ApplicationNavigator />
+            </KeyboardProvider>
+          </ThemeProvider>
+        </QueryClientProvider>
       </StoresProvider>
-
     </GestureHandlerRootView>
   );
 }

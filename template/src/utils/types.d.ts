@@ -17,7 +17,7 @@ type KeyboardType =
   | 'phone-pad'
   | 'url';
 
-  type PhotoFile = {
+type PhotoFile = {
   uri: string;
   name: string;
   type: string;

@@ -66,7 +66,7 @@ export default function CameraView({
           result.assets[0].uri!!,
           {
             progressDivider: 10,
-            downloadProgress: (progress) => {
+            downloadProgress: progress => {
               console.log('Compression progress:', progress);
             },
           },
@@ -81,7 +81,7 @@ export default function CameraView({
       }
       if (setPhotos) {
         if (result.assets && result.assets.length > 0) {
-          const newUris = result.assets.map((a) => ({
+          const newUris = result.assets.map(a => ({
             uri: a.uri!!,
             name: a.fileName || 'photo.jpg',
             type: a.type || 'image/jpeg',
@@ -94,7 +94,7 @@ export default function CameraView({
   };
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
-    onCodeScanned: (codes) => {
+    onCodeScanned: codes => {
       toast.success('QR code scanned!');
       setIsCodeScanner(false);
       if (setQRCode && codes[0]?.value) {
@@ -118,7 +118,7 @@ export default function CameraView({
       const uri = `file://${photoFile.path}`;
       const compressedURI = await ImageCompressor.compress(uri, {
         progressDivider: 10,
-        downloadProgress: (progress) => {
+        downloadProgress: progress => {
           console.log('Compression progress:', progress);
         },
       });

@@ -13,6 +13,7 @@
     "clean": "cd android && ./gradlew clean && cd ..",
     "release": "cd android && ./gradlew assembleRelease && cd ..",
     "release:bundle": "cd android && ./gradlew bundleRelease && cd ..",
+    "appicon": "node scripts/appicon.js",
     "postinstall": "patch-package"
   },
   "dependencies": {

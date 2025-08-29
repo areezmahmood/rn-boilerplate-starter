@@ -11,7 +11,7 @@ const { assetExts, sourceExts } = defaultConfig.resolver;
  */
 const config = {
   resolver: {
-    assetExts: assetExts.filter((extension) => extension !== 'svg'),
+    assetExts: assetExts.filter(extension => extension !== 'svg'),
     sourceExts: [...sourceExts, 'svg'],
   },
   transformer: {
