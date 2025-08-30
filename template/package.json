@@ -14,7 +14,7 @@
     "release": "cd android && ./gradlew assembleRelease && cd ..",
     "release:bundle": "cd android && ./gradlew bundleRelease && cd ..",
     "appicon": "node scripts/appicon.js",
-    "splash":"node scripts/splash.js",
+    "splash": "node scripts/splash.js",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-navigation/native": "^7.1.17",
     "@react-navigation/stack": "^7.4.7",
+    "@shopify/flash-list": "^2.0.3",
     "@tanstack/react-query": "^5.85.5",
     "i18next": "^25.4.1",
     "intl-pluralrules": "^2.0.1",
