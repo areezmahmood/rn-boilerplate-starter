@@ -6,13 +6,13 @@
     "react-native",
     "template"
   ],
-  "homepage": "https://github.com/AreezMahmood005/rn-boilerplate-starter.git#readme",
+  "homepage": "https://github.com/areezmahmood/rn-boilerplate-starter.git#readme",
   "bugs": {
-    "url": "https://github.com/AreezMahmood005/rn-boilerplate-starter.git/issues"
+    "url": "https://github.com/areezmahmood/rn-boilerplate-starter.git/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AreezMahmood005/rn-boilerplate-starter.git"
+    "url": "git+https://github.com/areezmahmood/rn-boilerplate-starter.git"
   },
   "license": "MIT",
   "author": "Areez Mahmood",
