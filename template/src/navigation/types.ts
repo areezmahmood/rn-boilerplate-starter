@@ -8,4 +8,5 @@ export type RootScreenProps<
 export type RootStackParamList = {
   [Paths.Example]: undefined;
   [Paths.Startup]: undefined;
+  [Paths.ChatScreen]: { name?: string; uri?: string };
 };

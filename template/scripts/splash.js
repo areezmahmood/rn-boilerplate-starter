@@ -1,29 +1,32 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const path = require("path");
-const { execSync } = require("child_process");
-const readline = require("readline");
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+const readline = require('readline');
 
 const projectRoot = process.cwd();
-const splashSource = path.join(projectRoot, "src/assets/branding/splash.png");
+const splashSource = path.join(projectRoot, 'src/assets/branding/splash.png');
 
 // --- ANDROID PATHS ---
-const drawableDir = path.join(projectRoot, "android/app/src/main/res/drawable");
-const stylesFile = path.join(projectRoot, "android/app/src/main/res/values/styles.xml");
+const drawableDir = path.join(projectRoot, 'android/app/src/main/res/drawable');
+const stylesFile = path.join(
+  projectRoot,
+  'android/app/src/main/res/values/styles.xml',
+);
 
 // --- IOS PATHS ---
 const iosImagesDir = path.join(
   projectRoot,
-  "ios",
-  "App",
-  "Images.xcassets",
-  "splash.imageset"
+  'ios',
+  'App',
+  'Images.xcassets',
+  'splash.imageset',
 );
 const iosStoryboard = path.join(
   projectRoot,
-  "ios",
-  "AwesomeProject",
-  "LaunchScreen.storyboard"
+  'ios',
+  'AwesomeProject',
+  'LaunchScreen.storyboard',
 );
 
 function ensureDir(dir) {
@@ -32,7 +35,7 @@ function ensureDir(dir) {
 
 function copySplashDrawable() {
   ensureDir(drawableDir);
-  const splashDrawable = path.join(drawableDir, "splash_logo.png");
+  const splashDrawable = path.join(drawableDir, 'splash_logo.png');
 
   // resize splash to 512x512
   execSync(`sips -z 512 512 "${splashSource}" --out "${splashDrawable}"`);
@@ -50,14 +53,14 @@ function createLayerListDrawable() {
     </item>
 </layer-list>
 `;
-  const target = path.join(drawableDir, "splash_background.xml");
-  fs.writeFileSync(target, xml, "utf8");
-  console.log("✅ Created splash_background.xml (layer-list)");
+  const target = path.join(drawableDir, 'splash_background.xml');
+  fs.writeFileSync(target, xml, 'utf8');
+  console.log('✅ Created splash_background.xml (layer-list)');
 }
 
 function injectSplashStyle(fullscreen) {
-  let xml = fs.readFileSync(stylesFile, "utf8");
-  const marker = "<!-- Customize your theme here. -->";
+  let xml = fs.readFileSync(stylesFile, 'utf8');
+  const marker = '<!-- Customize your theme here. -->';
 
   const normalSplash = `        <item name="android:windowBackground">@drawable/splash_background</item>`;
   const fullscreenSplash = `
@@ -68,12 +71,15 @@ function injectSplashStyle(fullscreen) {
 
   const insertBlock = fullscreen ? fullscreenSplash : normalSplash;
 
-  if (!xml.includes("@drawable/splash_logo") && !xml.includes("@drawable/splash_background")) {
+  if (
+    !xml.includes('@drawable/splash_logo') &&
+    !xml.includes('@drawable/splash_background')
+  ) {
     xml = xml.replace(marker, `${marker}\n${insertBlock}`);
-    fs.writeFileSync(stylesFile, xml, "utf8");
-    console.log("✅ Splash style injected into styles.xml");
+    fs.writeFileSync(stylesFile, xml, 'utf8');
+    console.log('✅ Splash style injected into styles.xml');
   } else {
-    console.log("ℹ️ Splash style already exists in styles.xml");
+    console.log('ℹ️ Splash style already exists in styles.xml');
   }
 }
 
@@ -81,49 +87,53 @@ function injectSplashStyle(fullscreen) {
 function createIOSImageset() {
   const imagesDir = path.join(
     projectRoot,
-    "ios",
-    "AwesomeProject",
-    "Images.xcassets",
-    "splash.imageset"
+    'ios',
+    'AwesomeProject',
+    'Images.xcassets',
+    'splash.imageset',
   );
   ensureDir(imagesDir);
 
   // Export splash in 1x, 2x, 3x
-  execSync(`sips -Z 200 "${splashSource}" --out "${path.join(imagesDir, "splash.png")}"`);
-  execSync(`sips -Z 400 "${splashSource}" --out "${path.join(imagesDir, "splash@2x.png")}"`);
-  execSync(`sips -Z 600 "${splashSource}" --out "${path.join(imagesDir, "splash@3x.png")}"`);
+  execSync(
+    `sips -Z 200 "${splashSource}" --out "${path.join(imagesDir, 'splash.png')}"`,
+  );
+  execSync(
+    `sips -Z 400 "${splashSource}" --out "${path.join(imagesDir, 'splash@2x.png')}"`,
+  );
+  execSync(
+    `sips -Z 600 "${splashSource}" --out "${path.join(imagesDir, 'splash@3x.png')}"`,
+  );
 
   const contents = {
     images: [
-      { idiom: "universal", filename: "splash.png", scale: "1x" },
-      { idiom: "universal", filename: "splash@2x.png", scale: "2x" },
-      { idiom: "universal", filename: "splash@3x.png", scale: "3x" },
+      { idiom: 'universal', filename: 'splash.png', scale: '1x' },
+      { idiom: 'universal', filename: 'splash@2x.png', scale: '2x' },
+      { idiom: 'universal', filename: 'splash@3x.png', scale: '3x' },
     ],
-    info: { version: 1, author: "xcode" },
+    info: { version: 1, author: 'xcode' },
   };
 
   fs.writeFileSync(
-    path.join(imagesDir, "Contents.json"),
+    path.join(imagesDir, 'Contents.json'),
     JSON.stringify(contents, null, 2),
-    "utf8"
+    'utf8',
   );
 
-  console.log("✅ Created splash.imageset for iOS");
+  console.log('✅ Created splash.imageset for iOS');
 }
-
-
 
 function patchIosStoryboard(fullscreen) {
   if (!fs.existsSync(iosStoryboard)) {
-    console.log("⚠️ LaunchScreen.storyboard not found, skipping iOS patch.");
+    console.log('⚠️ LaunchScreen.storyboard not found, skipping iOS patch.');
     return;
   }
 
-  let xml = fs.readFileSync(iosStoryboard, "utf8");
+  let xml = fs.readFileSync(iosStoryboard, 'utf8');
 
   // remove any existing <subviews>…</subviews> and <constraints>…</constraints>
-  xml = xml.replace(/<subviews>[\s\S]*?<\/subviews>/, "<subviews></subviews>");
-  xml = xml.replace(/<constraints>[\s\S]*?<\/constraints>/, "");
+  xml = xml.replace(/<subviews>[\s\S]*?<\/subviews>/, '<subviews></subviews>');
+  xml = xml.replace(/<constraints>[\s\S]*?<\/constraints>/, '');
 
   if (fullscreen) {
     // fullscreen image
@@ -133,7 +143,10 @@ function patchIosStoryboard(fullscreen) {
           translatesAutoresizingMaskIntoConstraints="NO" id="splashImage">
           <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
         </imageView>`;
-    xml = xml.replace("<subviews></subviews>", `<subviews>${imageView}\n</subviews>`);
+    xml = xml.replace(
+      '<subviews></subviews>',
+      `<subviews>${imageView}\n</subviews>`,
+    );
 
     const constraints = `
         <constraints>
@@ -151,7 +164,10 @@ function patchIosStoryboard(fullscreen) {
           translatesAutoresizingMaskIntoConstraints="NO" id="splashImage">
           <rect key="frame" x="107" y="298" width="200" height="200"/>
         </imageView>`;
-    xml = xml.replace("<subviews></subviews>", `<subviews>${imageView}\n</subviews>`);
+    xml = xml.replace(
+      '<subviews></subviews>',
+      `<subviews>${imageView}\n</subviews>`,
+    );
 
     const constraints = `
         <constraints>
@@ -161,22 +177,24 @@ function patchIosStoryboard(fullscreen) {
     xml = xml.replace(/<\/view>/, `${constraints}\n</view>`);
   }
 
-  fs.writeFileSync(iosStoryboard, xml, "utf8");
-  console.log(`✅ Patched LaunchScreen.storyboard for iOS (${fullscreen ? "fullscreen" : "centered"})`);
+  fs.writeFileSync(iosStoryboard, xml, 'utf8');
+  console.log(
+    `✅ Patched LaunchScreen.storyboard for iOS (${fullscreen ? 'fullscreen' : 'centered'})`,
+  );
 }
 
 // ----------------- COMMON -----------------
 function askQuestion(query) {
-  const rl = require("readline").createInterface({
+  const rl = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout,
   });
 
-  return new Promise((resolve) =>
-    rl.question(query, (ans) => {
+  return new Promise(resolve =>
+    rl.question(query, ans => {
       rl.close();
       resolve(ans.toLowerCase());
-    })
+    }),
   );
 }
 
@@ -186,8 +204,8 @@ function askQuestion(query) {
     process.exit(1);
   }
 
-  const answer = await askQuestion("Do you want a full screen splash (Y/N)? ");
-  const fullscreen = answer === "y" || answer === "yes";
+  const answer = await askQuestion('Do you want a full screen splash (Y/N)? ');
+  const fullscreen = answer === 'y' || answer === 'yes';
 
   // --- ANDROID ---
   copySplashDrawable();
@@ -195,16 +213,16 @@ function askQuestion(query) {
   injectSplashStyle(fullscreen);
 
   // --- IOS ---
-createIOSImageset();
+  createIOSImageset();
 
-if (fs.existsSync(iosStoryboard)) {
-  if (fullscreen) {
-    patchIosStoryboard(true); // fullscreen splash
+  if (fs.existsSync(iosStoryboard)) {
+    if (fullscreen) {
+      patchIosStoryboard(true); // fullscreen splash
+    } else {
+      patchIosStoryboard(false); // centered logo only
+    }
   } else {
-    patchIosStoryboard(false); // centered logo only
+    console.log('⚠️ LaunchScreen.storyboard not found, skipping iOS patch.');
   }
-} else {
-  console.log("⚠️ LaunchScreen.storyboard not found, skipping iOS patch.");
-}
-  console.log("🎉 Done!");
+  console.log('🎉 Done!');
 })();
