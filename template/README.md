@@ -10,6 +10,21 @@ A **Modern React Native boilerplate** designed to help you kickstart projects wi
 
 ---
 
+## 📢 What's New  
+
+✨ **v1.1.0** – Added **Chat UI** just like WhatsApp 🎉  
+
+- 💬 Modern chat screen with message bubbles  
+- 👤 Customizable chat header  
+- 📎 File & media attachments support  
+- 😀 Emoji picker integration  
+- 🖼️ Full-screen image viewer  
+
+Now you can instantly start building **messaging-based apps** on top of this boilerplate without extra setup.  
+
+
+---
+
 ## ✨ Features Out of the Box
 
 - ⚡️ **React Native 0.81 + React 19**
