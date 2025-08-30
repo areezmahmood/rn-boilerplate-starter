@@ -45,10 +45,10 @@ export default function ImageMessage({
                 }}
                 style={styles.additionalImage}
               >
-                <FastImage
+                <Image
                   source={{ uri: img.uri }}
                   style={styles.image}
-                  resizeMode={FastImage.resizeMode.cover}
+                  resizeMode={"cover"}
                 />
                 {index === 2 && (
                   <View style={styles.imageOverlay}>
