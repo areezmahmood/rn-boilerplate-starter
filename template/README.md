@@ -1,97 +1,148 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 rn-boilerplate-starter  
 
-# Getting Started
+[![React Native](https://img.shields.io/badge/React%20Native-0.81-blue?logo=react)](https://reactnative.dev/)  
+[![React](https://img.shields.io/badge/React-19-61dafb?logo=react)](https://react.dev/)  
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript)](https://www.typescriptlang.org/)  
+[![Node](https://img.shields.io/badge/Node.js-%3E=18-green?logo=node.js)](https://nodejs.org/)  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+A **Modern React Native boilerplate** designed to help you kickstart projects with production-ready features, clean architecture, and built-in utilities.  
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ✨ Features Out of the Box  
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- ⚡️ **React Native 0.81 + React 19**  
+- 🎨 **Custom branding scripts** (app icon & splash generator)  
+- 🗂 **Organized project structure**  
+- 📦 **MobX + Persist store** for state management  
+- 🌍 **i18n with react-i18next**  
+- 📡 **Tanstack Query (React Query)** for data fetching & caching  
+- ✅ **React Hook Form + Yup/Zod** validation  
+- 🖼 **SVG + Vector icons support**  
+- 📸 **Vision Camera + Image Picker + Compressor**  
+- ⌨️ **Keyboard controller** for smooth input handling  
+- 🔔 **Toast notifications**  
+- 🛡 **Error boundaries & safe fallbacks**  
+- 🔑 **Permissions handling (react-native-permissions)**  
+- 🧭 **React Navigation (stack + tabs ready)**  
+- 🚀 **Scripts for app branding**  
+- 🔧 **Pre-configured ESLint + Prettier + TypeScript**  
+
+---
+
+
+
+## 🛠 Installation  
 
 ```sh
-# Using npm
-npm start
+# Use the template
+npx @react-native-community/cli@latest init AwesomeProject --template rn-boilerplate-starter
 
-# OR using Yarn
+# Install dependencies
+yarn install
+
+# iOS setup
+yarn pod-install
+```
+
+---
+
+## ▶️ Running the App  
+
+```sh
+# Start Metro
 yarn start
-```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+# Run on Android
 yarn android
-```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+# Run on iOS
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+---
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 🎨 Branding (App Icons & Splash)  
 
-## Step 3: Modify your app
+Easily add your **custom app icon** and **splash screen**:  
 
-Now that you have successfully run the app, let's make changes!
+1. Place your images in:  
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```
+src/assets/branding/logo.png
+src/assets/branding/splash.png
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+2. Run the branding scripts:  
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```sh
+# Generate app icons
+yarn appicon
 
-## Congratulations! :tada:
+# Generate splash screen
+yarn splash
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+3. Rebuild your app:  
 
-### Now what?
+```sh
+yarn android
+# or
+yarn ios
+```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+---
 
-# Troubleshooting
+## 📂 Project Structure  
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```
+AwesomeProject/
+ ├── android/                # Native Android project
+ ├── ios/                    # Native iOS project
+ ├── src/
+ │   ├── assets/             # Images, fonts, branding
+ │   ├── components/         # Reusable UI components
+ │   ├── hooks/              # Custom React hooks
+ │   ├── navigation/         # Navigation setup
+ │   ├── screens/            # App screens
+ │   ├── store/              # MobX stores
+ │   ├── utils/              # Helpers & utilities
+ │   └── ...
+ ├── scripts/                # Branding & other custom scripts
+ ├── package.json
+ └── README.md
+```
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
+## 📜 Useful Scripts  
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+| Command              | Description                                      |
+|----------------------|--------------------------------------------------|
+| `yarn start`         | Start Metro bundler                              |
+| `yarn android`       | Run app on Android                               |
+| `yarn ios`           | Run app on iOS                                   |
+| `yarn lint`          | Run ESLint                                       |
+| `yarn format`        | Format code with Prettier                        |
+| `yarn clean`         | Clean Android build cache                        |
+| `yarn release`       | Create Android APK                               |
+| `yarn release:bundle`| Create Android App Bundle (AAB)                  |
+| `yarn pod-install`   | Install iOS pods                                 |
+| `yarn appicon`       | Generate app icons from `src/assets/branding/logo.png` |
+| `yarn splash`        | Generate splash screen from `src/assets/branding/splash.png` |
+
+---
+
+## ✅ Requirements  
+
+- Node.js `>=18`  
+- Yarn  
+- Xcode (for iOS builds)  
+- Android Studio (for Android builds)  
+
+---
+
+## 📝 License  
+
+MIT © [Areez Mahmood]  
