@@ -12,15 +12,9 @@ A **Modern React Native boilerplate** designed to help you kickstart projects wi
 
 ## 📢 What's New  
 
-✨ **v1.1.0** – Added **Chat UI** just like WhatsApp 🎉  
+✨ **v2.2.0** – Added **InAppBrowser** 🎉  
 
-- 💬 Modern chat screen with message bubbles  
-- 👤 Customizable chat header  
-- 📎 File & media attachments support  
-- 😀 Emoji picker integration  
-- 🖼️ Full-screen image viewer  
-
-Now you can instantly start building **messaging-based apps** on top of this boilerplate without extra setup.  
+- 🌐 Open URLs inside your app without taking users outside the native experience  
 
 ---
 
@@ -41,7 +35,14 @@ Now you can instantly start building **messaging-based apps** on top of this boi
 - 🔑 **Permissions handling (react-native-permissions)**  
 - 🧭 **React Navigation (stack + tabs ready)**  
 - 🚀 **Scripts for app branding**  
-- 🔧 **Pre-configured ESLint + Prettier + TypeScript**  
+- 🔧 **Pre-configured ESLint + Prettier + TypeScript**
+- 💬 **Modern Chat UI (WhatsApp-like)**  
+  - Message bubbles  
+  - Customizable chat header  
+  - File & media attachments support  
+  - Emoji picker integration  
+  - Full-screen image viewer  
+- 🌐 **InAppBrowser integration** – open links seamlessly inside the app  
 
 ---
 

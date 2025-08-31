@@ -48,7 +48,7 @@ export default function ImageMessage({
                 <Image
                   source={{ uri: img.uri }}
                   style={styles.image}
-                  resizeMode={"cover"}
+                  resizeMode={'cover'}
                 />
                 {index === 2 && (
                   <View style={styles.imageOverlay}>
